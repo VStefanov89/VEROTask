@@ -35,11 +35,11 @@ In particular, the script should:
 
 # Description
 ## Installation
-We need to install few packages to be able to performe the tast. First of all we will install pandas. Write to your terminal this:
+We need to install few packages to be able to perform the tast. First of all we will install pandas. Write to your terminal this:
 ```bash
 pip install pandas
 ```
-this will give us the desired format of our data. It is very easy to work with DataFrame type.
+this will give us DataFrame object with which we will transform our data. It is very easy to work with DataFrame type.
 Second we will install requests packages. With that we can make a request to the given urls and get the data from them
 ```bash
 pip install requests
@@ -56,12 +56,12 @@ pip install openpyxl
 ### Usage
 In our project we will create data.py file where we will create our Data class. This class will be responsible for our task. In it we will implement whole logic. For this class we will need few methods and i will go through all of them one by one:
 - We are creating our class atributes, REQUEST_DATA_URL, LOCAL_DATA, LABELS_IDS_URL. From there we will collect all the needed information for our task.
-- We are creating get_url_data method. This method is private because it is not needed to know how we do that outsite our class, but in the same time we can check it directly in out class. Most of our methods will be private. In this method we just make a request to REQUEST_DATA_URL and store the data into variable ant return it.
+- We are creating get_url_data method. This method is private because it is not needed to know how we do that outsite our class, but in the same time we can check it directly in our class. Most of our methods will be private. In this method we just make a request to REQUEST_DATA_URL and store the data into variable ant return it.
 - We are creating get_local_data method. It is private method. Here we are just getting the data from our vehicle.csv file, which is given to us by the task.
-- merge_data method. Everything here is clear. We are just merging our two dataframes, which we created above. In this method we make all the needed manipulation for our dataframe, before we start to export and color it. These two dataframes are the same, but in vehicle.csv file, there is one more item. Also after merging the datas, we are creating one big dataframe with the all info from the two dataframes. When we do that, we performe some manipulations to check is the info from the first is the same in the second, if not to make it the same.
-- We are crating get_data method, which will bring us to the final version of our dataframe. This will be the format with whom we will performe export method(which is not created yet). In this method we check for colorIds. If we find colorIds we place it in our dataframe, if not we give None.Also we performe some mathematical operations, here we need to find date difference between to columns with datetime objects and make that values to months.
-- We are creating two static method for our coloring in our dataframe. These methods will give us the flexibility to performe all kind of formation we want. But for out task we have only two conditions, so thats why we have two static methods. We called them format_df and format_text.
-- Finally we are creating our export method, which will be responsible for exporting the data and for its formating. In this method we implement almost all conditions from our task. Here is the while class Data:
+- merge_data method. Everything here is clear. We are just merging our two dataframes, which we created above. In this method we make all the needed manipulation for our dataframe, before we start to export and format it. These two dataframes are the same, but in vehicle.csv file, there is one more item. Also after merging the datas, we are creating one big dataframe with the all info from the two dataframes. When we do that, we performe some manipulations to check is the info from the first is the same in the second, if not we will make it the same.
+- We are creating get_data method, which will bring us to the final version of our dataframe. This will be the format with whom we will perform export method(which is not created yet). In this method we check for colorIds. If we find colorIds we place it in our dataframe, if not we give None.Also we performe some mathematical operations, here we need to find date difference between to columns with datetime objects and make that values to months.
+- We are creating two static method for our formating in our dataframe. These methods will give us the flexibility to performe all kind of formation we want. But for out task we have only two conditions, so that's why we have two static methods. We called them format_df and format_text.
+- Finally we are creating our export method, which will be responsible for exporting the data and for its formating. In this method we implement almost all conditions from our task. Here is the whole class Data:
 
 ```python
 import pandas as pd
@@ -198,8 +198,8 @@ class Data:
         temp_df = df[args]
         return temp_df
 ```
-## Finaly
-we are creating our main file, where we will give some input information for our data (what kind of columns we need to print). Here everything is pretty straight forward
+## Finally
+We are creating our main file, where we will give some input information for our data (what kind of columns we need to print). Here everything is pretty straight forward
 
 ```python
 import pandas as pd
