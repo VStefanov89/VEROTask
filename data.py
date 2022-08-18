@@ -55,10 +55,10 @@ class Data:
 
         df.drop(['gruppe_y', 'langtext_y', 'info_y', 'lagerort_y', 'labelIds_y'], inplace=True, axis=1)
         df.rename(columns={'gruppe_x': 'gruppe',
-                              'langtext_x': 'langtext',
-                              'info_x': 'info',
-                              'lagerort_x': 'lagerort',
-                              'labelIds_x': 'labelIds'}, inplace=True)
+                           'langtext_x': 'langtext',
+                           'info_x': 'info',
+                           'lagerort_x': 'lagerort',
+                           'labelIds_x': 'labelIds'}, inplace=True)
 
         df = df[df['hu'].notnull()]
         df = df.reset_index(drop=True)
@@ -119,7 +119,8 @@ class Data:
                     f"{file_name}{curr_date_iso}.xlsx", index=False)
 
         if colored:
-            df.style.apply(lambda df: self.format_df(df), axis=1).to_excel(f"{file_name}{curr_date_iso}.xlsx", index=False)
+            df.style.apply(lambda df: self.format_df(df), axis=1).to_excel(f"{file_name}{curr_date_iso}.xlsx",
+                                                                           index=False)
         else:
             df.to_excel(f"{file_name}{curr_date_iso}.xlsx", index=False)
 
